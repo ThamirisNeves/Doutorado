@@ -1,0 +1,5 @@
+date_time,video_path,com_port,trigger_code,button_press_time_monotonic,first_flip_time_monotonic,trigger_send_time_monotonic,movie_start_time_clock,movie_end_time_clock,duration_s,aborted,notes
+2026-03-16 22:44:47,video\Protocolo_10_repeticoes_final.mp4,COM3,1,,,,,,,False,
+2026-03-16 22:45:19,video\Protocolo_10_repeticoes_final.mp4,COM3,1,,,,,,,False,
+2026-03-16 22:51:46,video\Protocolo_10_repeticoes_final.mp4,COM3,1,,,,,,,False,
+2026-03-16 22:52:24,video\Protocolo_10_repeticoes_final.mp4,COM3,1,,,,,,,False,

@@ -1,0 +1,18 @@
+[project]
+name = "interface_trigger_COM"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.10"
+dependencies = [
+    "psychopy", 
+    "pyserial",
+    "imageio", 
+    "imageio-ffmpeg", 
+    "streamlit",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+]

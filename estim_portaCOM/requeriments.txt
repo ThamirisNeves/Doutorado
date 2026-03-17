@@ -1,0 +1,5 @@
+psychopy 
+pyserial 
+imageio 
+imageio-ffmpeg
+streamlit 

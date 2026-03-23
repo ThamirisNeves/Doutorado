@@ -1,0 +1,18 @@
+[project]
+name = "biosemi_trigger_app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">3.10.0, <3.11"
+dependencies = [
+    "psychopy", 
+    "pyserial",
+    "imageio", 
+    "imageio-ffmpeg", 
+    "streamlit",
+]
+
+[dependency-groups]
+dev = [
+    "pyinstaller"
+]

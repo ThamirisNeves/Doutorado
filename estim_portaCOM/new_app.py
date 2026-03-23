@@ -9,9 +9,10 @@ from serial.tools import list_ports
 
 VIDEO_PATH = r"video\Protocolo_10_repeticoes_final.mp4"
 BAUDRATE = 115200
-TRIGGER_CODE = 1
+TRIGGER_CODE = 115
 TRIGGER_DURATION_S = 0.008
 
+#deixar explicito que a variável é binária ou caractere de 1 byte (int8)
 
 def get_available_ports():
     return list(list_ports.comports())

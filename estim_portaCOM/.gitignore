@@ -1,5 +1,4 @@
-﻿# Build artifacts
-dist/
+﻿dist/
 build/
 *.exe
 *.pkg

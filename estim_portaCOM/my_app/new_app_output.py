@@ -1,29 +1,31 @@
 import base64
 import time
+import sys
 from pathlib import Path
 
 import serial
 from serial.tools import list_ports
 import streamlit as st
 
-import sys
-from pathlib import Path
 
 def resource_path(relative_path: str) -> Path:
     if hasattr(sys, "_MEIPASS"):
         return Path(sys._MEIPASS) / relative_path
     return Path(__file__).resolve().parent / relative_path
 
+
 VIDEO_PATH = resource_path("video/Protocolo_10_repeticoes_final.mp4")
 BAUDRATE = 115200
-TRIGGER_CODE = 115
+TRIGGER_CODE = 0x01
 TRIGGER_DURATION_S = 0.008
+
 
 def load_video_bytes(video_path) -> bytes:
     path = Path(video_path)
     if not path.exists():
         raise FileNotFoundError(f"Vídeo não encontrado: {path.resolve()}")
     return path.read_bytes()
+
 
 def get_available_ports():
     return list(list_ports.comports())
@@ -61,7 +63,7 @@ def send_serial_bytes(payload: bytes):
     try:
         ser.write(payload)
         ser.flush()
-        return True, f"Enviado: {payload!r}"
+        return True, f"Enviado: {payload.hex()} (hex)"
     except Exception as e:
         return False, f"Erro ao enviar dados: {e}"
 
@@ -73,7 +75,7 @@ def send_biosemi_trigger(trigger_code: int):
     ok, msg = send_serial_bytes(bytes([trigger_code]))
     if ok:
         time.sleep(TRIGGER_DURATION_S)
-        return True, f"Trigger {trigger_code} enviado com sucesso."
+        return True, f"Trigger 0x{trigger_code:02X} enviado com sucesso."
     return ok, msg
 
 
@@ -94,13 +96,6 @@ def read_serial_available() -> str:
         return ""
     except Exception as e:
         return f"\n[ERRO DE LEITURA] {e}\n"
-
-
-def load_video_bytes(video_path: str) -> bytes:
-    path = Path(video_path)
-    if not path.exists():
-        raise FileNotFoundError(f"Vídeo não encontrado: {path.resolve()}")
-    return path.read_bytes()
 
 
 if "play_requested" not in st.session_state:
@@ -139,7 +134,7 @@ selected_port = st.selectbox(
 st.markdown("### Configuração atual")
 st.write(f"**Vídeo:** `{VIDEO_PATH}`")
 st.write(f"**Baudrate:** `{BAUDRATE}`")
-st.write(f"**Trigger:** `{TRIGGER_CODE}`")
+st.write(f"**Trigger:** `0x{TRIGGER_CODE:02X}`")
 st.write(f"**Conectado:** `{'Sim' if st.session_state.connected else 'Não'}`")
 
 col_a, col_b, col_c, col_d = st.columns(4)
@@ -210,4 +205,3 @@ try:
 
 except Exception as e:
     st.error(f"Erro ao carregar/exibir vídeo: {e}")
-

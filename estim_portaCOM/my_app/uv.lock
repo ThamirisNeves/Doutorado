@@ -85,6 +85,8 @@ dependencies = [
     { name = "psychopy" },
     { name = "pyserial" },
     { name = "streamlit" },
+    { name = "opencv-python" },
+    { name = "pandas" },
 ]
 
 [package.dev-dependencies]

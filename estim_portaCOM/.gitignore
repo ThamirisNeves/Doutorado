@@ -2,6 +2,7 @@
 video/
 dist/
 build/
+esp_32/
 *.exe
 *.pkg
 .venv/

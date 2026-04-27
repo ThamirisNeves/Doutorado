@@ -1,0 +1,19 @@
+services:
+  streamlit-app:
+    build: .
+    container_name: streamlit-trigger-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./video:/app/video
+    environment:
+      - SERIAL_DEVICE=${SERIAL_DEVICE:-/dev/ttyUSB0}
+    devices:
+      - "${SERIAL_DEVICE:-/dev/ttyUSB0}:${SERIAL_DEVICE:-/dev/ttyUSB0}"
+    privileged: true
+    restart: unless-stopped
+
+
+  
+  
+  

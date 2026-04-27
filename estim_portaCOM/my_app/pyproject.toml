@@ -10,6 +10,7 @@ dependencies = [
     "imageio", 
     "imageio-ffmpeg", 
     "streamlit",
+    "flask",
 ]
 
 [dependency-groups]

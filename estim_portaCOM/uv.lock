@@ -504,7 +504,6 @@ dependencies = [
     { name = "imageio-ffmpeg" },
     { name = "psychopy" },
     { name = "pyserial" },
-    { name = "pywinhook" },
     { name = "streamlit" },
 ]
 
@@ -519,7 +518,6 @@ requires-dist = [
     { name = "imageio-ffmpeg" },
     { name = "psychopy" },
     { name = "pyserial" },
-    { name = "pywinhook" },
     { name = "streamlit" },
 ]
 
@@ -3664,7 +3662,7 @@ name = "pywinhook"
 version = "1.6.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pywin32" },
+    { name = "pywin32", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ce/d1/6dcf4a17f425a5e3e2c011bac622dacae3128e96fd038b3e6f56c0e7a032/pyWinhook-1.6.2.zip", hash = "sha256:18fe2f63245d8a2f9d83f8d9c385e3695a6363badd50d492eb3e7f6f06a01c0c", size = 15791, upload-time = "2020-01-17T22:00:09.328Z" }
 wheels = [

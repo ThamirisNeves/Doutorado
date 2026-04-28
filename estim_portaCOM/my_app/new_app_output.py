@@ -190,16 +190,34 @@ try:
 
     if st.session_state.play_requested:
         st.components.v1.html(
-            f"""
-            <div style="display:flex; justify-content:center;">
-                <video width="900" controls autoplay>
+                f"""
+                <div style="
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                width:100%;
+                height:780px;
+                background-color:black;
+                overflow:hidden;
+                border-radius:12px;
+            ">
+                <video
+                    controls
+                    autoplay
+                    style="
+                        width:100%;
+                        height:100%;
+                        object-fit:contain;
+                        background-color:black;
+                    "
+                >
                     <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
                     Seu navegador não suporta vídeo HTML5.
                 </video>
             </div>
             """,
-            height=550,
-        )
+            height=820,
+                        )
     else:
         st.video(video_bytes)
 
